@@ -2369,7 +2369,8 @@ function CT2QX(cnt) {
   tls13 = PTls13 == 1 ? "tls13=true" : "tls13=false"
   udp = cnt.udp ? "udp-relay=false" : "udp-relay=false"
   tfo = cnt.tfo ? "fast-open=true" : "fast-open=false"
-  node = "trojan="+[ipt, pwd, otls, cert, tls13, udp, tfo, tag].filter(Boolean).join(", ")
+  thost=cnt.sni ? "tls-host="+cnt.sni : ""
+  node = "trojan="+[ipt, pwd,thost, otls, cert, tls13, udp, tfo, tag].filter(Boolean).join(", ")
   //console.log(node)
   return node
 
